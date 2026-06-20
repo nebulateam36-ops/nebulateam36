@@ -284,67 +284,30 @@ section {
     font-size: 0.95rem;
 }
 
-/* КОНТАКТЫ + ФОРМА */
+/* КОНТАКТЫ (только соцсети, форма удалена) */
 .contacts-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
 }
-.contact-form {
-    padding: 40px 32px;
-}
-.contact-form label {
-    font-weight: 500;
-    display: block;
-    margin-top: 18px;
-    margin-bottom: 6px;
-    color: #b8ccff;
-}
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 14px 18px;
-    border-radius: 40px;
-    background: rgba(0, 20, 60, 0.5);
-    border: 1px solid rgba(42, 92, 255, 0.3);
-    color: #fff;
-    font-size: 1rem;
-    outline: none;
-    transition: 0.2s;
-    backdrop-filter: blur(4px);
-}
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: #00D4FF;
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
-}
-.contact-form textarea {
-    min-height: 120px;
-    resize: vertical;
-    border-radius: 24px;
-}
-.contact-form .btn-primary {
-    margin-top: 24px;
-    width: 100%;
-    justify-content: center;
-}
 .social-block {
-    padding: 32px 24px;
+    padding: 40px 32px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    justify-content: center;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
 }
 .social-block h3 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     letter-spacing: 1px;
 }
 .social-links {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
 }
 .social-links a {
     display: inline-flex;
@@ -371,9 +334,6 @@ section {
 /* ----- АДАПТИВНОСТЬ (Mobile First) ----- */
 @media (max-width: 992px) {
     .about-grid {
-        grid-template-columns: 1fr;
-    }
-    .contacts-wrapper {
         grid-template-columns: 1fr;
     }
     .hero h1 {
@@ -427,5 +387,96 @@ section {
     }
     .logo-text {
         font-size: 1.4rem;
+    }
+}
+/* ============================================================
+   КЛИКАБЕЛЬНЫЕ КАРТОЧКИ УСЛУГ
+   ============================================================ */
+.service-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.service-card-link:hover {
+    transform: translateY(-5px);
+}
+
+.service-card-link .service-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card-link .service-card:hover {
+    border-color: #00D4FF;
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.2);
+}
+
+.service-tag {
+    display: inline-block;
+    margin-top: 16px;
+    color: #00D4FF;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.service-card-link:hover .service-tag {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+/* ============================================================
+   СТРАНИЦА УСЛУГИ (service.html)
+   ============================================================ */
+.back-link {
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    color: #B026FF !important;
+    transform: translateX(-5px);
+}
+
+.service-detail-card {
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .service-detail-card {
+        padding: 30px 20px !important;
+    }
+    
+    .service-detail-content .service-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .service-detail-content [style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .service-detail-content [style*="grid-template-columns: 1fr 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .service-detail-content h1 {
+        font-size: 1.8rem !important;
     }
 }
